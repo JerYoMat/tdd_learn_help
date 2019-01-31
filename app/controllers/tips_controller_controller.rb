@@ -1,0 +1,2 @@
+class TipsControllerController < ApplicationController
+end
