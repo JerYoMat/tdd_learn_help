@@ -1,15 +1,11 @@
-<% lessons = ["Ruby Basics", "Git and Github", "OO Ruby", "SQL", "ORM and ActiveRecord", "Rack and Middleware", "Sinatra", "Rails", "Javascript Basics", "Working with DOM", "CSS", "Job Hunt"] %>
+test_lesson_topic_1:
+  name: Test Lesson 1
+  description: This is a test description
+  course_order: 1
+  id: 1
 
-
-<% 12.times do |n| %>
-  
-  <% test_name = lessons[n-1] %>
-  <% test_description = Faker::Lorem.sentences(3) %>
-  <% test_course_order = n %>
-  
-  test_lesson_topic_<%= n %>:
-    name: <%= test_name %>
-    description: <%= test_description %>
-    course_order: <%= test_course_order%>
-    
-<% end %>
+test_lesson_topic_2:
+  name: Test Lesson 2
+  description: This is a test description
+  course_order: 2
+  id: 2
