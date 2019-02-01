@@ -3,7 +3,7 @@ test_user_michael:
   name: Test Example
   email: test@example.com
   password_digest: <%= BCrypt::Password.create('password') %>
-  has_graduated: false 
+  has_graduated: true  
 
 test_user_angelo:
   id: 2

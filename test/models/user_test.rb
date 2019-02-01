@@ -1,10 +1,11 @@
 require 'test_helper'
+require 'pry'
 
 class UserTest < ActiveSupport::TestCase
   def setup
     @user1 = users(:test_user_michael)
     @user2=User.new( name: 'michael',
-                     email: 'michael@testusermodel.com', password: 'password', password_confirmation: 'password') 
+                     email: 'michael@testusermodel.com', password: 'password', password_confirmation: 'password', has_graduated: false) 
   end 
 
   test 'should be valid'  do
@@ -23,7 +24,7 @@ class UserTest < ActiveSupport::TestCase
   end 
 
   test 'valid email address format is accepted' do 
-    valid_email_addresses = %w[test1@example.com TEST@EXAMPLE.CoM with.period@999.com FOREIGN@Gruen.de]
+    valid_email_addresses = %w[test1@use.com TEST@EXAMPLE.CoM with.period@999.com FOREIGN@Gruen.de]
     valid_email_addresses.each do |single_address|
       assert @user1.valid?, "#{single_address.inspect} should be valid"  
     end 
@@ -40,8 +41,9 @@ class UserTest < ActiveSupport::TestCase
   test 'password matches password_confirmation and length exceeds 7' do 
     @user2.password_confirmation = ''
     assert_not @user2.valid?, 'password and password confirmation should match'
-    @user1.password = "short12"
-    @user1.password_confirmation = "short12"
+    @user2.password = "s"
+    @user2.password_confirmation = "s"
+   
     assert_not @user1.valid?, 'password cannot be less than 7 characters'
   end
 
