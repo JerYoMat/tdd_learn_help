@@ -2,8 +2,8 @@ require 'test_helper'
 
 class LessonTopicTest < ActiveSupport::TestCase
   def setup 
-    @lesson = LessonTopics(:test_lesson_topic_1)
-    @other_lesson = LessonTopics(:test_lesson_topic_2)
+    @lesson = lesson_topics(:test_lesson_topic_1)
+    @other_lesson = lesson_topics(:test_lesson_topic_2)
   end 
 
   test 'should be valid' do

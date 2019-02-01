@@ -3,14 +3,14 @@ require 'test_helper'
 class TipTest < ActiveSupport::TestCase
 
   def setup 
-    @tip1 = Tips(:test_tip_1)
-    @tip2 = Tips(:test_tip_2)
-    @user1 = Users(:test_user_1)
-    @lesson_topic1= LessonTopics(:test_lesson_topic_1)
+    @tip1 = tips(:test_tip_1)
+    @tip2 = tips(:test_tip_2)
+    @user1 = users(:test_user_michael)
+    @lesson_topic1= lesson_topics(:test_lesson_topic_1)
   end 
 
   test 'should be valid' do 
-    assert @tip.valid?
+    assert @tip1.valid?
   end 
 
   test 'tip belongs to a user' do 

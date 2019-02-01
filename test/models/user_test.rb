@@ -2,9 +2,9 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user1 = users(:test_user_1)
+    @user1 = users(:test_user_michael)
     @user2=User.new( name: 'michael',
-                     email: 'michael@testusermodel.com', password: password, password_confirmation: password_confirmation) 
+                     email: 'michael@testusermodel.com', password: 'password', password_confirmation: 'password') 
   end 
 
   test 'should be valid'  do
@@ -25,7 +25,7 @@ class UserTest < ActiveSupport::TestCase
   test 'valid email address format is accepted' do 
     valid_email_addresses = %w[test1@example.com TEST@EXAMPLE.CoM with.period@999.com FOREIGN@Gruen.de]
     valid_email_addresses.each do |single_address|
-      assert @user.valid?, "#{single_address.inspect} should be valid"  
+      assert @user1.valid?, "#{single_address.inspect} should be valid"  
     end 
   end 
 
