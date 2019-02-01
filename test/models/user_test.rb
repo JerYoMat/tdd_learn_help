@@ -40,6 +40,9 @@ class UserTest < ActiveSupport::TestCase
   test 'password matches password_confirmation and length exceeds 7' do 
     @user2.password_confirmation = ''
     assert_not @user2.valid?, 'password and password confirmation should match'
+    @user1.password = "short12"
+    @user1.password_confirmation = "short12"
+    assert_not @user1.valid?, 'password cannot be less than 7 characters'
   end
 
   test 'has_graduated is present' do 
