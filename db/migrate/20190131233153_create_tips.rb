@@ -6,6 +6,7 @@ class CreateTips < ActiveRecord::Migration[5.2]
       t.string :link 
       t.belongs_to :lesson_topic
       t.belongs_to :user 
+      t.string :lesson_outcome
       t.timestamps
     end
     add_index :tips, [:user_id, :created_at]

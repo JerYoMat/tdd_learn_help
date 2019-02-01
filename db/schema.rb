@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_01_002342) do
+ActiveRecord::Schema.define(version: 2019_01_31_233215) do
 
   create_table "lesson_topics", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_02_01_002342) do
     t.string "link"
     t.integer "lesson_topic_id"
     t.integer "user_id"
+    t.string "lesson_outcome"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lesson_topic_id"], name: "index_tips_on_lesson_topic_id"
@@ -39,16 +40,8 @@ ActiveRecord::Schema.define(version: 2019_02_01_002342) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-  end
-
-  create_table "users_tables", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
     t.boolean "has_graduated"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
