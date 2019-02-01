@@ -1,11 +1,15 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+<% lessons = ["Ruby Basics", "Git and Github", "OO Ruby", "SQL", "ORM and ActiveRecord", "Rack and Middleware", "Sinatra", "Rails", "Javascript Basics", "Working with DOM", "CSS", "Job Hunt"] %>
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+
+<% 12.times do |n| %>
+  
+  <% test_name = lessons[n-1] %>
+  <% test_description = Faker::Lorem.sentences(3) %>
+  <% test_course_order = n %>
+  
+  test_lesson_topic_<%= n %>:
+    name: <%= test_name %>
+    description: <%= test_description %>
+    course_order: <%= test_course_order%>
+    
+<% end %>

@@ -1,11 +1,19 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+<% 100.times do |n| %>
+  
+  <% test_name = Faker::Name.name %>
+  <% test_description = Faker::Lorem.sentences(3) %>
+  <% test_url = Faker::Internet.url %>
+  <% test_lesson_topic = %>
+  <% test_user = users("test_user_#{rand(10)+1}")%>
+  <% random_number = 1 + rand(20) %>
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+  
+  test_tip_<%= n %>:
+    name: <%= test_name %>
+    description: <%= test_description %>
+    link: <%= test_url %>
+    lesson_topic: <%= test_lesson_topic %>
+    user: <%= test_user %>
+    created_at: <%= random_number.days.ago %>
+
+<% end %>

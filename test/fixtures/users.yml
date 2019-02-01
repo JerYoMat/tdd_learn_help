@@ -1,11 +1,14 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+<% 10.times do |n| %>
+  
+  <% test_name = Faker::Name.name %>
+  <% test_email = Faker::Internet.email %>
+  <% test_password_digest = BCrypt::Password.create('password') %>
+  <% random_number = 1 + rand(20) %>
+  
+  test_user_<%= n %>:
+    name: <%= test_name %>
+    email: <%= test_email %>
+    password_digest: <%= test_password_digest%>
+    created_at: <%= randum_number.days.ago %>
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+<% end %>
