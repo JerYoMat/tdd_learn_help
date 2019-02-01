@@ -4,11 +4,12 @@
   <% test_email = Faker::Internet.email %>
   <% test_password_digest = BCrypt::Password.create('password') %>
   <% random_number = 1 + rand(20) %>
-  
+  <% bool = rand() > 0.5 ? true :false %>
   test_user_<%= n %>:
     name: <%= test_name %>
     email: <%= test_email %>
     password_digest: <%= test_password_digest%>
+    has_graduated: <%= bool %>
     created_at: <%= randum_number.days.ago %>
 
 <% end %>
