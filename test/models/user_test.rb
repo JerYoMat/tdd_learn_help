@@ -15,6 +15,8 @@ class UserTest < ActiveSupport::TestCase
   test 'user name  is required' do
     @user2.name = '   ' 
     assert_not @user2.save 
+    @user2.name = 'a' * 256
+    assert_not @user2.save, "Too long name should not save"
   end 
   
   test 'unique email address is required' do 
@@ -22,6 +24,13 @@ class UserTest < ActiveSupport::TestCase
     @user2.email = @user1.email.upcase
     assert_not @user2.save, 'User2 should not save with email equal to existing user'
   end 
+
+  test 'email address does not exceed length limit' do 
+    @user1.email = 'a' * 250 + '@name.com'
+    assert_not @user1.save
+  end 
+
+  
 
   test 'valid email address format is accepted' do 
     valid_email_addresses = %w[test1@use.com TEST@EXAMPLE.CoM with.period@999.com FOREIGN@Gruen.de]
