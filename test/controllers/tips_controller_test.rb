@@ -75,15 +75,5 @@ class TipsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end 
 
-  test 'should redirect update when not logged in' do 
-    assert_no_difference 'Tip.count' do
-      patch tip_path(@tip), params: { tip: { 
-        name: "Test Name",
-        lesson_topic_id: 1,
-        user_id: 1,    
-        description: "Lorem ipsum" } }
-    end
-    assert_redirected_to login_url
-  end 
 
 end
