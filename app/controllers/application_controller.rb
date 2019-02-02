@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
+  end
+  
+
   def set_user
     @user = User.find(params[:id])
   end 
@@ -48,9 +53,6 @@ class ApplicationController < ActionController::Base
     session.delete(:forwarding_url)
   end
 
-  def store_location
-    session[:forwarding_url] = request.original_url if request.get?
-  end
-  
+
 
 end
