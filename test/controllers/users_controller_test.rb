@@ -11,7 +11,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end 
  
+  test 'user cannot delete someone else ' do 
+    log_in_as(@user1)
+    assert_no_difference 'User.count' do
+        delete user_path(@user2)
+    end
+    assert_redirected_to root_path
+  end   
+  
    
+ 
    test "should get new" do
      get signup_path
      assert_response :success
@@ -24,19 +33,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
      assert_redirected_to root_url
    end 
 
-   test 'only owning user can delete themselves' do 
-    assert_no_difference 'User.count' do
-        delete user_path(@user1)
-    end
-    assert_redirected_to root_path
-    log_in_as(@user1)
-    assert_no_difference 'User.count' do
-        delete user_path(@user2)
-    end
-    assert_redirected_to root_path
+   
+
+   
+  test 'should be valid' do
     log_in_as(@user1)
     assert_difference 'User.count' do
-        delete tip_path(@user1)
+        delete user_path(@user1)
     end
     assert_redirected_to root_path
   end 

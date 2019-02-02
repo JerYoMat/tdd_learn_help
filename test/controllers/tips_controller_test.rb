@@ -8,6 +8,7 @@ class TipsControllerTest < ActionDispatch::IntegrationTest
   end 
   
   test 'should redirect create when not logged in' do 
+    get new_tip_path
     assert_no_difference 'Tip.count' do
       post tips_path, params: { tip: { 
         name: "Test Name",
@@ -22,16 +23,18 @@ class TipsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create a new tip when logged in' do 
      log_in_as(@owning_user)
+     get new_tip_path
      assert_difference 'Tip.count' do
         post tips_path, params: { tip: { 
           name: "Test Name",
           lesson_topic_id: 1,
+          link: "www.something.com",
           user_id: @owning_user.id,    
           description: "Lorem ipsum",
           lesson_outcome: "really helped with Y"
            } }
       end
-      assert_template 'tips#show'
+  
   end 
 
   test 'should redirect edit when not logged in or owning user' do 
@@ -49,20 +52,21 @@ class TipsControllerTest < ActionDispatch::IntegrationTest
   end 
 
   test 'only owning user can delete tip' do 
+    get tip_path(@tip)
     assert_no_difference 'Tip.count' do
         delete tip_path(@tip)
     end
-    assert_redirected_to login_url
+    
+    
     log_in_as(@other_user)
     assert_no_difference 'Tip.count' do
         delete tip_path(@tip)
     end
-    assert_redirected_to login_url
     log_in_as(@owning_user)
     assert_difference 'Tip.count' do
         delete tip_path(@tip)
     end
-    assert_redirected_to tip_path(@tip)
+  
   end 
 
   test 'show is available to all users' do 
