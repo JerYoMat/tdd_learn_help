@@ -2,12 +2,12 @@ test_user_michael:
   id: 1
   name: Test Example
   email: test@example.com
-  password_digest: <%= BCrypt::Password.create('password') %>
-  has_graduated: true  
+  password_digest: <%= User.digest('password') %>
+  has_graduated: true 
 
 test_user_angelo:
   id: 2
   name: Angelo
   email: test22@example.com
-  password_digest: <%= BCrypt::Password.create('password') %>
+  password_digest: <%= User.digest('password') %>
   has_graduated: true 
