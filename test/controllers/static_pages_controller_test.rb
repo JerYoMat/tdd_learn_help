@@ -12,9 +12,5 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     
   end 
 
-  test 'A logged in user should not see an option to sign up' do 
-    log_in_as(@user)
-    get root_path
-    !assert_select 'button li', "Sign up now!"
-  end 
+  
 end
